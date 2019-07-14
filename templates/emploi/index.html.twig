@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmploiController!{% endblock %}
+
+{% block body %}
+<br>
+{% for message in app.flashes('danger')%}
+    <div class="alert alert-danger">
+    {{message}}
+    </div>
+{% endfor %}
+<h1>Gestion des employés de la Sonatel Academy</h1>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Matricule</th>
+      <th scope="col">Nom_Complet</th>
+      <th scope="col">Date_de_Naissance</th>
+      <th scope="col">Salaire</th>
+      <th scope="col">Service</th>
+      <th scope="col">Modifier</th>
+      <th scope="col">Supprimer</th>
+    </tr>
+  </thead>
+  {% for employes in employe %}
+  <tr>
+     <td> {{employes.matricule}} </td>
+      <td> {{employes.nomcomplet}}</td>
+       <td> {{employes.datenaissance | date('d/m/Y')}}</td>
+        <td> {{employes.salaire}}</td>
+         <td> {{employes.service.libelle}}</td>
+         <td>
+         <a href="{{path('edit',{id:employes.id})}}" class="btn btn-warning">modifier</a>
+         </td>
+         <td>
+         <a href="/emploi/{{employes.id}}/delete" class="btn btn-danger">supprimer</a>
+         </td>
+        </tr>
+  {% endfor %}
+</table>
+{% endblock %}

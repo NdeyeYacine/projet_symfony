@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% form_theme formEmploye 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+<h1>Ajout  employé de la sonatel academy</h1>
+
+{{ form_start(formEmploye) }}
+
+{{ form_row(formEmploye.matricule, {'attr':{'placeholder':"entrer votre matricule"}}) }}
+
+{{ form_row(formEmploye.nomcomplet, {'attr':{'placeholder':"entrer votre nom au complet"}}) }}
+
+{{ form_row(formEmploye.datenaissance, {'attr':{'placeholder':"entrer votre date de naissance"}}) }}
+
+{{ form_row(formEmploye.salaire, {'attr':{'placeholder':"entrer le salaire"}}) }}
+
+{{ form_row(formEmploye.service) }}
+
+<button type="submit" class="btn btn-success">
+   {% if editMode %}
+        enregistrer modification
+   {% else %}
+        Ajouter
+    {% endif %}
+</button>
+
+{{ form_end(formEmploye) }}
+
+{% endblock %}
